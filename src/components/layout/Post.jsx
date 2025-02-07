@@ -29,7 +29,6 @@ import {
   faEye,
   faSquareCheck,
 } from "@fortawesome/free-solid-svg-icons";
-import "./../../styles/Post.css";
 import { axiosInstance } from "../../lib/axios.js";
 import globalState from "../../lib/globalState.js";
 import Carousel from "./Carousel.jsx";
