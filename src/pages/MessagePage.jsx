@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import "../styles/MessagePage.css";
 import ReactPlayer from "react-player";
 import { axiosInstance } from "../lib/axios";
 import globalState from "../lib/globalState.js";
