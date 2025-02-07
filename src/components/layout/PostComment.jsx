@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowRight, faEllipsisVertical, faPen, faPenToSquare, faReply, faTrash, faTrashCan, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faHeart, faThumbsDown, faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { axiosInstance } from "../../lib/axios.js";
-import "./../../styles/commentBox.css";
 import globalState from "../../lib/globalState.js";
 
 const PostComment = ({ e, showTime, loggedInUserId, postId, postCreatorId, width }) => {
