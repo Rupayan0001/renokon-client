@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import Topbar from "../components/layout/Topbar";
 import LeftBarComponent from "../components/layout/LeftBarComponent";
 import Post from "../components/layout/Post";
-import "./../styles/ProfilePage.css";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { axiosInstance } from "../lib/axios";
 import globalState from "../lib/globalState.js";
