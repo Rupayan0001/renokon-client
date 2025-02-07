@@ -12,7 +12,6 @@ const ResetPasswordPage = React.lazy(() => import(`./pages/auth/ResetPasswordPag
 const PoliciesPage = React.lazy(() => import("./pages/auth/PoliciesPage.jsx"));
 const VerifyEmailPage = React.lazy(() => import("./pages/auth/VerifyEmailPage"));
 const ProfilePage = React.lazy(() => import("./pages/ProfilePage"));
-const ReelsPage = React.lazy(() => import("./pages/ReelsPage"));
 const MessagePage = React.lazy(() => import("./pages/MessagePage.jsx"));
 const AdsPage = React.lazy(() => import("./pages/AdsPage.jsx"));
 const ShopPage = React.lazy(() => import("./pages/ShopPage.jsx"));
@@ -95,14 +94,6 @@ function App() {
             element={
               <ProtectedRoute>
                 <ProfilePage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/reels"
-            element={
-              <ProtectedRoute>
-                <ReelsPage />
               </ProtectedRoute>
             }
           />
