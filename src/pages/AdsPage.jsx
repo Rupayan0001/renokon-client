@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import Topbar from "../components/layout/Topbar";
-import "./../styles/HomePage.css";
 import { axiosInstance } from "../lib/axios";
 import globalState from "../lib/globalState.js";
 import postTimeLogic from "../lib/Post_Time_Logic.js";
