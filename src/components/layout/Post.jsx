@@ -32,7 +32,6 @@ import {
 import { axiosInstance } from "../../lib/axios.js";
 import globalState from "../../lib/globalState.js";
 import Carousel from "./Carousel.jsx";
-import ImageSwiper from "./ImageSwiper.jsx";
 import { Link } from "react-router-dom";
 import HoverBasicDetails from "./HoverBasicDetails.jsx";
 import { AnimatePresence, motion } from "framer-motion";
