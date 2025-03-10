@@ -10,7 +10,7 @@ const globalState = create((set, get) => ({
   socketHolder: null,
 
   connectSocket: () => {
-    const socket = new WebSocket("ws://localhost:5000");
+    const socket = new WebSocket("wss://renokon-backend.onrender.com");
 
     socket.onopen = () => {
       console.log("websocket connected");
