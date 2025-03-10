@@ -18,7 +18,7 @@ import TopButtonsNav from "../components/layout/game/TopButtonsNav.jsx";
 import PoolCard from "../components/layout/game/PoolCard.jsx";
 // import { PoolDataLists } from "../lib/poolDataLists.js";
 import MiddleTitle from "../components/layout/game/MiddleTitle.jsx";
-import Loader from "../components/layout/loader.jsx";
+import Loader from "../components/layout/Loader.jsx";
 import Notification from "../components/layout/Notification.jsx";
 import GameFilterButtons from "../components/layout/game/GameFilterButtons.jsx";
 import { groupGamePools } from "../lib/groupGamePools.js";
