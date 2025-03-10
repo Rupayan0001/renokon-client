@@ -23,7 +23,7 @@ import { groupGamePools } from "../../lib/groupGamePools.js";
 import winSound from "../../assets/notification_sound/crowd-cheer-ii-6263.mp3";
 import loseSound from "../../assets/notification_sound/game-over-39-199830.mp3";
 import usePrev from "../../hooks/usePrev.js";
-import Loader from "../../components/layout/loader.jsx";
+import Loader from "../../components/layout/Loader.jsx";
 import Notification from "../../components/layout/Notification.jsx";
 import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
