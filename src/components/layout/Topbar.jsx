@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import "./../../styles/Topbar.css";
 import { Link, useParams, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import globalState from "../../lib/globalState.js";
