@@ -23,7 +23,7 @@ import { groupGamePools } from "../../lib/groupGamePools.js";
 import usePrev from "../../hooks/usePrev.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAward, faChessKing, faCrown, faMedal, faShare, faShareFromSquare, faTrophy } from "@fortawesome/free-solid-svg-icons";
-import Loader from "../../components/layout/loader.jsx";
+import Loader from "../../components/layout/Loader.jsx";
 import ProfileCard from "../../components/layout/ProfileCard.jsx";
 import Notification from "../../components/layout/Notification.jsx";
 import ShareModal from "../../components/layout/ShareModal.jsx";
