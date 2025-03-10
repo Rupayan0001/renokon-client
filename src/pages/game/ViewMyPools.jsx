@@ -21,7 +21,7 @@ import MiddleTitle from "../../components/layout/game/MiddleTitle.jsx";
 import GameFilterButtons from "../../components/layout/game/GameFilterButtons.jsx";
 import { groupGamePools } from "../../lib/groupGamePools.js";
 import usePrev from "../../hooks/usePrev.js";
-import Loader from "../../components/layout/loader.jsx";
+import Loader from "../../components/layout/Loader.jsx";
 import Notification from "../../components/layout/Notification.jsx";
 
 const ViewMyPools = () => {
