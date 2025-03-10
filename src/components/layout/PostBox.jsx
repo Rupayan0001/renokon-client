@@ -4,7 +4,6 @@ import globalState from "../../lib/globalState.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSliders, faXmark, faPhotoFilm, faRightLong, faEarthAmericas, faUsers, faUser, faSortDown, faLock, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { axiosInstance } from "../../lib/axios";
-import "./../../styles/PostBox.css";
 import axios from "axios";
 import VideoPlayer from "./VideoPlayer.jsx";
 
