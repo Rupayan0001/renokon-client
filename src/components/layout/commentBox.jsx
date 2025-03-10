@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faCircleArrowRight, faEllipsisVertical, faPen, faPenToSquare, faReply, faTrash, faTrashCan, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faHeart, faThumbsDown, faThumbsUp } from "@fortawesome/free-regular-svg-icons";
 import { axiosInstance } from "../../lib/axios";
-import "./../../styles/commentBox.css";
 import globalState from "../../lib/globalState.js";
 import postTimeLogic from "../../lib/Post_Time_Logic.js";
 import PostComment from "./PostComment.jsx";
