@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from "react";
 import globalState from "../../lib/globalState";
-import "./../../styles/About.css";
 import { axiosInstance } from "../../lib/axios";
 
 const About = ({ width }) => {
