@@ -1,5 +1,5 @@
 import React from "react";
-import H2H from "../../../assets/images/H2h.webp";
+import H2H from "../../../assets/images/H2H.webp";
 import footbalImg from "../../../assets/images/Mega_Pools_2.webp";
 import Limited from "../../../assets/images/Limited.jpg";
 import musicImg from "../../../assets/images/Tournament.webp";
