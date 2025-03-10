@@ -11,8 +11,8 @@ import TopbarRightDropdown from "../../components/layout/TopbarRightDropdown.jsx
 import Logout from "../../components/layout/Logout.jsx";
 import Confirmation from "../../components/layout/Confirmation.jsx";
 import Notify from "../../components/layout/Notify.jsx";
-import MiddleTitle from "../../components/layout/game/middleTitle.jsx";
-import Loader from "../../components/layout/loader.jsx";
+import MiddleTitle from "../../components/layout/game/MiddleTitle.jsx";
+import Loader from "../../components/layout/Loader.jsx";
 import Notification from "../../components/layout/Notification.jsx";
 import usePrev from "../../hooks/usePrev.js";
 import { v4 as uuidv4 } from "uuid";
