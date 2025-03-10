@@ -3,7 +3,6 @@ import { axiosInstance } from "../../lib/axios";
 import Carousel from "./Carousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faAngleLeft, faCircleXmark, faArrowLeft, faXmark } from "@fortawesome/free-solid-svg-icons";
-import "./../../styles/SignUpPage.css";
 import { Photos_Profile_Skeleton } from "./Photos_Profile_Skeleton";
 import globalState from "../../lib/globalState";
 import PhotosCollage from "./PhotosCollage";
