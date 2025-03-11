@@ -209,9 +209,10 @@ const ProfilePage = () => {
   const fetchPosts = async (page) => {
     setLoadingPosts(true);
     postsArrayRef.current = post;
+    const ids = postsArrayRef.current.map((e) => e._id);
     try {
       const responseForPosts = await axiosInstance.get(`/post/${userId}/getCurrentUserPost`, {
-        params: { page: page, limit: 50 },
+        params: { page: page, limit: 50, exclude: ids },
       });
       if (responseForPosts.data.posts && responseForPosts.data.posts.length === 0 && page === 1) {
         setHasMore(false);
