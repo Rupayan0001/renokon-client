@@ -210,7 +210,6 @@ const ProfilePage = () => {
     setLoadingPosts(true);
     postsArrayRef.current = post;
     const ids = postsArrayRef.current.map((e) => e._id);
-    console.log("ids", ids)
     try {
       const responseForPosts = await axiosInstance.get(`/post/${userId}/getCurrentUserPost`, {
         params: { page: page, limit: 50, exclude: ids },
@@ -235,12 +234,17 @@ const ProfilePage = () => {
       if (responseForPosts.data.posts && responseForPosts.data.posts.length > 0) {
         setLikedData(responseForPosts.data.likedData);
         
-        setNewPost((prevPosts) => {
-  const allPosts = [...(Array.isArray(prevPosts) ? prevPosts : []), ...(Array.isArray(responseForPosts?.data?.posts) ? responseForPosts.data.posts : [])];
-  const uniquePosts = Array.from(new Map(allPosts.map(post => [post._id, post])).values());
+       setNewPost((prevPosts) => {
+  const newPosts = responseForPosts.data.posts;
 
-  return uniquePosts;
+  // Filter out posts that already exist in prevPosts
+  const filteredNewPosts = newPosts.filter(newPost => 
+    !prevPosts.some(existingPost => existingPost._id === newPost._id)
+  );
+
+  return [...prevPosts, ...filteredNewPosts];
 });
+
 
         setLoadingPosts(false);
         return;
