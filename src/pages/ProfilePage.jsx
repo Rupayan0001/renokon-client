@@ -236,10 +236,12 @@ const ProfilePage = () => {
         setLikedData(responseForPosts.data.likedData);
         
         setNewPost((prevPosts) => {
-  const allPosts = [...prevPosts, ...responseForPosts.data.posts];
+  const allPosts = [...(Array.isArray(prevPosts) ? prevPosts : []), ...(Array.isArray(responseForPosts?.data?.posts) ? responseForPosts.data.posts : [])];
   const uniquePosts = Array.from(new Map(allPosts.map(post => [post._id, post])).values());
+
   return uniquePosts;
 });
+
         setLoadingPosts(false);
         return;
       } else {
