@@ -29,7 +29,7 @@ const WritePost = forwardRef(({ width }, ref) => {
       <div className="writePostTop pb-2 border-b-2 border-zinc-300">
         <div className="profileImg flex items-center">
           <Link to={`/userProfile/${loggedInUser._id}`}>
-            <img src={pic} className={` ${width > 550 ? "w-[50px] h-[50px]" : "ml-2 w-[40px] h-[40px]"} cursor-pointer rounded-full mr-3`} alt="" />
+            <img src={pic} className={` ${width > 550 ? "w-[50px] h-[50px]" : "ml-2 w-[40px] h-[40px]"} object-cover cursor-pointer rounded-full mr-3`} alt="" />
           </Link>
           <input
             type="text"
