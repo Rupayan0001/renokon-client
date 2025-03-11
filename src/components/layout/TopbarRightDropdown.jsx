@@ -68,7 +68,7 @@ const TopbarRightDropdown = forwardRef(({ pageName, width }, ref) => {
           width > 400 ? " w-[300px]" : " w-[250px]"
         } h-[40px] transition duration-100 rounded-md cursor-pointer`}
       >
-        <img src={loggedInUser.profilePic} className="w-[33px] h-[33px] ml-[-5px] rounded-full mr-3" alt="" />{" "}
+        <img src={loggedInUser.profilePic} className="w-[33px] h-[33px] object-cover ml-[-5px] rounded-full mr-3" alt="" />{" "}
         {loggedInUser.name.length > 22 ? loggedInUser.name.slice(0, 22) + "..." : loggedInUser.name}
       </div>
       {/* {width < 1024 && (pageName === "Profile" || pageName === "Home") && (
