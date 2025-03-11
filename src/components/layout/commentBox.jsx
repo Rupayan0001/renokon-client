@@ -201,7 +201,7 @@ const CommentBox = ({ loggedInUserName, loggedInUserProfilePic, postCreatorName,
           </div>
           <div className="absolute bg-white flex justify-between items-top px-2 bottom-[-10px] w-[100%]">
             <div className="mt-2">
-              <img src={loggedInUserProfilePic} className="w-[35px] h-[35px] rounded-full" alt="" />
+              <img src={loggedInUserProfilePic} className="w-[35px] h-[35px] object-cover rounded-full" alt="" />
             </div>
             <div className={`relative ${width > 460 ? "w-[90%]" : "w-[80%]"} `}>
               <textarea
