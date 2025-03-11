@@ -190,7 +190,7 @@ const CreateGroup = ({ width }) => {
                       }}
                       className={`flex relative items-center w-full text-white h-[80px] cursor-pointer hover:bg-slate-600 rounded-lg px-4 transition duration-200 mt-2`}
                     >
-                      <img src={e.friendId.profilePic} className="w-[65px] h-[50px] rounded-full" alt="" />
+                      <img src={e.friendId.profilePic} className="w-[65px] h-[50px] object-cover rounded-full" alt="" />
                       <div className="ml-4 w-full">
                         <div className="flex justify-between items-center">
                           {<h1 className="text-white text-[14px] font-bold">{e.friendId.name.length > 26 ? e.friendId.name.slice(0, 26) + "..." : e.friendId.name}</h1>}
