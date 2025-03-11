@@ -234,16 +234,7 @@ const ProfilePage = () => {
       if (responseForPosts.data.posts && responseForPosts.data.posts.length > 0) {
         setLikedData(responseForPosts.data.likedData);
         
-       setNewPost((prevPosts) => {
-  const newPosts = responseForPosts.data.posts;
-
-  // Filter out posts that already exist in prevPosts
-  const filteredNewPosts = newPosts.filter(newPost => 
-    !prevPosts.some(existingPost => existingPost._id === newPost._id)
-  );
-
-  return [...prevPosts, ...filteredNewPosts];
-});
+       setNewPost([...postsArrayRef.current, ...responseForPosts.data.posts]);
 
 
         setLoadingPosts(false);
