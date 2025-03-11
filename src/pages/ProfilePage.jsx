@@ -234,7 +234,12 @@ const ProfilePage = () => {
       }
       if (responseForPosts.data.posts && responseForPosts.data.posts.length > 0) {
         setLikedData(responseForPosts.data.likedData);
-        setNewPost([...postsArrayRef.current, ...responseForPosts.data.posts]);
+        
+        setNewPost((prevPosts) => {
+  const allPosts = [...prevPosts, ...responseForPosts.data.posts];
+  const uniquePosts = Array.from(new Map(allPosts.map(post => [post._id, post])).values());
+  return uniquePosts;
+});
         setLoadingPosts(false);
         return;
       } else {
