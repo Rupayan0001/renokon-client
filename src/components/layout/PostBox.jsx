@@ -410,7 +410,7 @@ const PostBox = forwardRef(({ onSubmit, page, width }, ref) => {
             <div className={`info relative flex border-t-2 border-gray-300 pt-4  ${width > 450 ? "justify-between items-center mt-1" : "flex-col mt-1"}  `}>
               <div className="flex ">
                 <Link to={`/userProfile/${loggedInUser._id}`}>
-                  <img src={loggedInUser.profilePic} className="h-[45px] w-[45px] rounded-full ml-2 " alt="profile" />
+                  <img src={loggedInUser.profilePic} className="h-[45px] w-[45px] object-cover rounded-full ml-2 " alt="profile" />
                 </Link>
                 <div className="">
                   <Link to={`/userProfile/${loggedInUser._id}`}>
