@@ -210,6 +210,7 @@ const ProfilePage = () => {
     setLoadingPosts(true);
     postsArrayRef.current = post;
     const ids = postsArrayRef.current.map((e) => e._id);
+    console.log("ids", ids)
     try {
       const responseForPosts = await axiosInstance.get(`/post/${userId}/getCurrentUserPost`, {
         params: { page: page, limit: 50, exclude: ids },
