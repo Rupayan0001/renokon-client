@@ -331,13 +331,8 @@ const HomePage = () => {
       const response = await axiosInstance.post("/auth/logout");
       if (response.data.message === "Logged out successfully") {
         setIsLoggedOut(true);
-        notifyTimer.current = setTimeout(() => {
-          setLogOut(null);
-          navigate("/login");
-        }, 1000);
-      } else {
-        throw Error;
-      }
+         setLogOut(null);
+           navigate("/login", { replace: true })        
     } catch (error) {
       setLogOut(null);
       setNotify("Failed to logout, please try again");
