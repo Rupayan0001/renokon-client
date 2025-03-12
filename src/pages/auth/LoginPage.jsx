@@ -92,7 +92,7 @@ const LoginPage = () => {
       if (response.data.message === "Logged in successfully") {
         if (response.data.message === "Logged in successfully" && response.data.sendUser._id) {
           setIsAuthenticated(true);
-          navigate("/home");
+          navigate("/");
         }
       }
     } catch (error) {
