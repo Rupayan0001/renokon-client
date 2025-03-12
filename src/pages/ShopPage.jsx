@@ -332,7 +332,8 @@ const HomePage = () => {
       if (response.data.message === "Logged out successfully") {
         setIsLoggedOut(true);
          setLogOut(null);
-           navigate("/login", { replace: true })        
+           navigate("/login", { replace: true }) 
+      }
     } catch (error) {
       setLogOut(null);
       setNotify("Failed to logout, please try again");
