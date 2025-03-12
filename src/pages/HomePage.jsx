@@ -483,7 +483,8 @@ const HomePage = () => {
       if (response.data.message === "Logged out successfully") {
         setIsLoggedOut(true);
           setLogOut(null);
-           window.location.href = "/login";
+           navigate("/login", { replace: true })
+        window.location.reload(true);  
       } else {
         throw new Error("Logout failed")
       }
