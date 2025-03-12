@@ -13,7 +13,6 @@ const globalState = create((set, get) => ({
     const socket = new WebSocket("wss://renokon-backend.onrender.com");
 
     socket.onopen = () => {
-      console.log("websocket connected");
       set({ socketHolder: socket });
       retryAttempts = 0;
     };
@@ -27,11 +26,9 @@ const globalState = create((set, get) => ({
       }
     };
     socket.onclose = () => {
-      console.log("Websocket got disconnected");
       if (!get().isLoggedOut) {
         retryAttempts++;
         if (retryAttempts <= maxRetries) {
-          console.log("trying to reconnect ", retryAttempts);
           const delay = Math.min(retryAttempts * reconnectDelay, maxReconnectDelay);
 
           setTimeout(() => {
