@@ -484,11 +484,8 @@ const HomePage = () => {
         setIsLoggedOut(true);
           setLogOut(null);
            navigate("/login", { replace: true })
-      } else {
-        throw new Error("Logout failed")
       }
     } catch (error) {
-      console.log(error)
       setLogOut(null);
       setNotify("Failed to logout, please try again");
       notifyTimer.current = setTimeout(() => {
