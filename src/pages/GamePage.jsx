@@ -287,12 +287,8 @@ const GamePage = () => {
     try {
       const response = await axiosInstance.post("/auth/logout");
       if (response.data.message === "Logged out successfully") {
-        notifyTimer.current = setTimeout(() => {
-          setLogOut(null);
-          navigate("/login");
-        }, 1000);
-      } else {
-        throw Error;
+        setLogOut(null);
+        navigate("/login", { replace: true })
       }
     } catch (error) {
       setLogOut(null);
