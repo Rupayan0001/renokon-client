@@ -277,9 +277,9 @@ const PoolPage = () => {
   return (
     <>
       {confirmDelete && <Confirmation width={windowWidth} cancel={setConfirmDelete} proceed={handleDeletePost} ConfirmText={"Are you sure you want to delete this post?"} />}
-      {/* {clickedLogOut && (
+      {clickedLogOut && (
         <Confirmation width={windowWidth} cancel={setClickedLogOut} proceed={logout} ConfirmText={`${loggedInUser.name.split(" ")[0]}, are you sure you want to log out?`} />
-      )} */}
+      )}
       {logOut && (
         <div className="flex justify-center items-center bg-black bg-opacity-30 ">
           <Logout width={windowWidth} />
