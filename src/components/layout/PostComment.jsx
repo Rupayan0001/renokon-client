@@ -83,7 +83,7 @@ const PostComment = ({ e, showTime, loggedInUserId, postId, postCreatorId, width
       <div className={`mt-8 relative flex group/item`}>
         <div className="mt-[-6px] mr-1">
           <Link to={`/userProfile/${e.creatorId}`}>
-            <img src={e.creatorProfilePic} className="w-[35px] h-[35px] rounded-full" alt="" />
+            <img src={e.creatorProfilePic} className="w-[35px] h-[35px] object-cover rounded-full" alt="" />
           </Link>
         </div>
         <div
