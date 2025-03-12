@@ -26,7 +26,6 @@ const globalState = create((set, get) => ({
       }
     };
     socket.onclose = () => {
-      alert("closed")
       if (!get().isLoggedOut) {
         retryAttempts++;
         if (retryAttempts <= maxRetries) {
