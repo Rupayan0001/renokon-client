@@ -1,22 +1,22 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   base: "/",
-  assetsDir: "assets", 
+  build: {
+    rollupOptions: {
+      output: {
+        entryFileNames: 'assets/[name]-[hash].js',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]',
+      }
+    }
+  },
   optimizeDeps: {
-    exclude: ['process'],  // Exclude dotenv from frontend bundle
+    exclude: ['process'],
   },
   server: {
-    host: '0.0.0.0', // or use your local IP address
+    host: '0.0.0.0',
   },
-
 })
-
-// resolve: {
-//   alias: {
-//     'dotenv': false, // Exclude dotenv
-//   },
-// },
