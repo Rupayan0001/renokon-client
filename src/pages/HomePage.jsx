@@ -482,12 +482,10 @@ const HomePage = () => {
       const response = await axiosInstance.post("/auth/logout");
       if (response.data.message === "Logged out successfully") {
         setIsLoggedOut(true);
-        notifyTimer.current = setTimeout(() => {
           setLogOut(null);
            window.location.href = "/login";
-        }, 1000);
       } else {
-        throw Error;
+        throw new Error("Logout failed")
       }
     } catch (error) {
       setLogOut(null);
