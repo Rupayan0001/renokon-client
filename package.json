@@ -43,6 +43,7 @@
     "swiper": "^11.2.1",
     "tailwind-scrollbar": "^3.1.0",
     "uuidv4": "^6.2.13",
+    "vite-plugin-compression": "^0.5.1"
     "world-countries": "^5.0.0",
     "zego-express-engine-webrtc": "^3.7.4",
     "zustand": "^5.0.1"
