@@ -615,7 +615,7 @@ const ViewMyPools = () => {
                       <div key={e._id} className={`w-full px-2 mb-6`}>
                         <div className="w-full flex justify-between items-center">
                           <div className="flex items-center">
-                            <img src={e.profilePic} className="h-[35px] w-[35px] aspect-square rounded-full" />
+                            <img src={e.profilePic} className="h-[35px] w-[35px] aspect-square object-cover rounded-full" />
                             <p className="text-white ml-3 text-md font-semibold">{e._id === loggedInUser._id ? "You" : e.name.split(" ")[0]}</p>
                             <p className="mx-4 text-white">|</p>
                             <p className="text-white ml-0 text-md font-semibold">
