@@ -1400,26 +1400,16 @@ const MessagePage = () => {
     try {
       const response = await axiosInstance.post("/auth/logout");
       if (response.data.message === "Logged out successfully") {
-        navigate("/login");
+         setLogOut(null);
+           navigate("/login", { replace: true })
         setLastMessage([]);
         setFriendsList([]);
         setActiveGroup(null);
         setActiveFriend(null);
         setMessages([]);
         setOnlineUsers([]);
-        // setCalling(null);
-        // setIncomingCall(null);
-        // setLocalVideo(null);
-        // setFriendVideo(null);
-        // setLocalVideo(null);
-        // setFriendVideo(null);
         setIsLoggedOut(true);
-        setLogOut(null);
-        // notifyTimer.current = setTimeout(() => {
-        // }, 1000);
-      } else {
-        throw Error;
-      }
+      } 
     } catch (error) {
       setLogOut(null);
       setNotify("Error occured, please try again");
