@@ -484,7 +484,7 @@ const HomePage = () => {
         setIsLoggedOut(true);
         notifyTimer.current = setTimeout(() => {
           setLogOut(null);
-          navigate("/login");
+           window.location.href = "/login";
         }, 1000);
       } else {
         throw Error;
