@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import Topbar from "../components/layout/Topbar";
-import "./../styles/HomePage.css";
 import WritePost from "../components/layout/WritePost";
 import { axiosInstance } from "../lib/axios";
 import globalState from "../lib/globalState.js";
