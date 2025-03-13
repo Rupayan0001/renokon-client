@@ -209,10 +209,9 @@ const ProfilePage = () => {
   const fetchPosts = async (page) => {
     setLoadingPosts(true);
     postsArrayRef.current = post;
-    const ids = postsArrayRef.current.map((e) => e._id);
     try {
       const responseForPosts = await axiosInstance.get(`/post/${userId}/getCurrentUserPost`, {
-        params: { page: page, limit: 50, exclude: ids },
+        params: { page: page, limit: 50 },
       });
       if (responseForPosts.data.posts && responseForPosts.data.posts.length === 0 && page === 1) {
         setHasMore(false);
@@ -233,8 +232,10 @@ const ProfilePage = () => {
       }
       if (responseForPosts.data.posts && responseForPosts.data.posts.length > 0) {
         setLikedData(responseForPosts.data.likedData);
-        
-       setNewPost([...postsArrayRef.current, ...responseForPosts.data.posts]);
+       const oldPostIds = postsArrayRef.current.map(e=> e._id);
+       const newPosts = responseForPosts.data.posts.filter(e => !oldPostIds.includes(e._id));
+      postsArrayRef.current = [...postsArrayRef.current, ...newPosts];        
+       setNewPost([...postsArrayRef.current]);
 
 
         setLoadingPosts(false);
