@@ -6,15 +6,8 @@
     }
   ],
   "rewrites": [
-    { "source": "/assets/(.*)", "destination": "/assets/$1" },
-    { "source": "/static/js/(.*)", "destination": "/static/js/$1" },
-    { "source": "/static/css/(.*)", "destination": "/static/css/$1" },
-    { "source": "/favicon.ico", "destination": "/favicon.ico" },
-    { "source": "/robots.txt", "destination": "/robots.txt" },
-    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
     {
       "source": "/(.*)",
-      "has": [{ "type": "header", "key": "accept", "value": "text/html" }],
       "destination": "/index.html"
     }
   ]
