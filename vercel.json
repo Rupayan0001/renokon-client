@@ -9,13 +9,11 @@
   ],
   "rewrites": [
     { "source": "/assets/(.*)", "destination": "/assets/$1" },
-    { "source": "/_next/static/(.*)", "destination": "/_next/static/$1" },
     { "source": "/favicon.ico", "destination": "/favicon.ico" },
     { "source": "/robots.txt", "destination": "/robots.txt" },
     { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
     {
       "source": "/(.*)",
-      "has": [{ "type": "header", "key": "accept", "value": "text/html" }],
       "destination": "/index.html"
     }
   ]
