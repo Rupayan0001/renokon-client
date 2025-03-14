@@ -92,13 +92,13 @@ const CommentBox = ({ loggedInUserName, loggedInUserProfilePic, postCreatorName,
     }
   }
   async function deleteComment() {
+    setDeletePostComment(null);
     if (notifyTimer.current) {
       clearTimeout(notifyTimer.current);
       setNotify(null);
     }
     try {
       const response = await axiosInstance.delete(`/post/${deletePostComment}/${postId}/deleteComment`);
-      setDeletePostComment(null);
       setComment(response.data.allComments);
       setCommentCounts(response.data.allComments.length);
       if (width > 768) {
