@@ -15,7 +15,7 @@ import bollywoodImg from "../../../assets/images/srk-jawan-1200.jpg";
 import musicImg from "../../../assets/images/Arijit-Singh-.jpg";
 import financeImg from "../../../assets/images/1085f340-bfeb-424e-a9d5-723d1f63d29b (1).jpg";
 import personalityImg from "../../../assets/images/PM-Narendra-Modi-iPhone-Wallpapers.jpg";
-// import geographyImg from "../../../assets/images/India_geo.webp";
+import cric2 from "../../../assets/images/1315984.jpg";
 import geographyImg from "../../../assets/images/indian-flag-abstract-background-wallpaper-for-independence-day-on-15-august-ai-generative-free-photo.jpg";
 import historyImg from "../../../assets/images/Freedom_fighters.webp";
 // import historyImg from "../../../assets/images/reimagining-netaji-subhash-chandra-bose-through-ai-v0-0rjcpva5i4ec1d.jpg";
@@ -24,7 +24,7 @@ import footballImg2 from "../../../assets/images/cristiano-ronaldo-cr7-the-kick-
 import businessImg from "../../../assets/images/pngtree-partnership-of-companies-collaboration-business-technology-internet-concept-image_15659993.jpg";
 
 const slides = [
-  { id: 1, image: cricketImg, title: "Mega Quiz Pool - Win $5000", link: "/game/cricket" },
+  { id: 1, image: cric2, title: "Mega Quiz Pool - Win $5000", link: "/game/cricket" },
   { id: 2, image: footbalImg, title: "Daily Cash Quiz - $1000 Prize", link: "/game/football" },
   { id: 3, image: bollywoodImg, title: "Daily Cash Quiz - $1000 Prize", link: "/game/bollywood" },
   { id: 4, image: musicImg, title: "Esports Quiz Battle - $3000", link: "/game/music" },
@@ -37,7 +37,7 @@ const slides = [
 ];
 const slides2 = [
   // { id: 1, image: bollywoodImg2, title: "Mega Quiz Pool - Win $5000", link: "/game/bollywood" },
-  { id: 1, image: cricketImg, title: "Mega Quiz Pool - Win $5000", link: "/game/cricket" },
+  { id: 1, image: cric2, title: "Mega Quiz Pool - Win $5000", link: "/game/cricket" },
   { id: 2, image: footballImg2, title: "Daily Cash Quiz - $1000 Prize", link: "/game/football" },
   { id: 3, image: bollywoodImg2, title: "Daily Cash Quiz - $1000 Prize", link: "/game/bollywood" },
   { id: 4, image: musicImg, title: "Esports Quiz Battle - $3000", link: "/game/music" },
@@ -73,18 +73,6 @@ const HeroSlider = ({ width }) => {
   return (
     <div className={`relative w-[95%] max-w-[768px] ${width > 768 ? "h-[250px]" : "h-[130px]"} bg-black mt-3 mx-auto overflow-hidden rounded-xl shadow-lg`}>
       {width > 525 ? (
-        // <Link to={slides2[0].link}>
-        //   <motion.img
-        //     key={slides2[0].id}
-        //     src={slides2[0].image}
-        //     alt={`Slide ${slides2[0].id}`}
-        //     className="w-[100%] h-[100%] object-cover"
-        //     initial={{ opacity: 0, y: 0 }}
-        //     animate={{ opacity: 1, y: 0 }}
-        //     exit={{ opacity: 0, y: 0 }}
-        //     transition={{ duration: 1, ease: "easeInOut" }}
-        //   />
-        // </Link>
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           spaceBetween={10}
