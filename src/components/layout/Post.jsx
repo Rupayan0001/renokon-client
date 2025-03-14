@@ -38,6 +38,7 @@ import HoverBasicDetails from "./HoverBasicDetails.jsx";
 import { AnimatePresence, motion } from "framer-motion";
 import VideoPlayer from "./VideoPlayer.jsx";
 import PhotosCollage from "./PhotosCollage.jsx";
+import sound from "../../assets/notification_sound/interface-button-154180.mp3";
 
 export default function Post({
   userId,
@@ -117,6 +118,7 @@ export default function Post({
   const entirePostRef = useRef();
   const notifyTimer = useRef();
   const dialogHoverTimer = useRef();
+  const soundRef = useRef();
 
   useEffect(() => {
     function clickOutside(e) {
@@ -164,6 +166,7 @@ export default function Post({
     }
   }, [voters]);
   async function updateLikes() {
+    if (soundRef.current) soundRef.current.play();
     const found = likedData.findIndex((e) => e.postId === id);
     if (found >= 0) {
       likedData[found].userLiked = likeStatus ? false : true;
@@ -596,6 +599,7 @@ export default function Post({
 
   return (
     <div className="inter" ref={entirePostRef}>
+      <audio src={sound} preload="auto" ref={soundRef} className="hidden" />
       <div
         className={`mainPost bg-gradient-to-r from-slate-900 to-black shadowForPost ${shared && "max-h-[90vh] overflow-y-scroll scrollbar-thin"} ${
           width >= 1280 && "w-[550px] mt-4 rounded-lg"

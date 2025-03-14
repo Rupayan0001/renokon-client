@@ -145,7 +145,7 @@ const GamePage = () => {
     }
     try {
       setPoolsLoading(true);
-      const response = await axiosInstance.get(`/game/poolsData/maths`);
+      const response = await axiosInstance.get(`/game/poolsData/cricket`);
       setPoolsLoading(false);
       if (response.data.success) {
         setStorePools(response.data.pools);
@@ -288,7 +288,7 @@ const GamePage = () => {
       const response = await axiosInstance.post("/auth/logout");
       if (response.data.message === "Logged out successfully") {
         setLogOut(null);
-        navigate("/login", { replace: true })
+        navigate("/login", { replace: true });
       }
     } catch (error) {
       setLogOut(null);

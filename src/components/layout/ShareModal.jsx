@@ -20,86 +20,14 @@ const ShareModal = forwardRef(({ page = "Home", URL = "", width }, ref) => {
 
   const mainUrl = `https://renokon.com/home/${shareOptions}`;
 
-  // const gameURL = `http://localhost:5173/game/${shareOptions}`;
-
-  // async function handleShareClick(buttonName, url) {
-  //   setCloseModal(true);
-  //   const encodedURL = encodeURIComponent(url);
-  //   if (!url.includes("game")) {
-  //     try {
-  //       const response = await axiosInstance.put(`/post/updateShareCount/${shareOptions}`);
-  //     } catch (error) {}
-  //   }
-  //   if (page === "Home") {
-  //     const found = homePagePost.findIndex((e) => e._id === shareOptions);
-  //     if (found >= 0) {
-  //       homePagePost[found].sharesCount += 1;
-  //       setHomePagePost([...homePagePost]);
-  //     }
-  //   } else if (page === "Profile") {
-  //     const found = post.findIndex((e) => e._id === shareOptions);
-  //     if (found >= 0) {
-  //       post[found].sharesCount += 1;
-  //       setNewPost([...post]);
-  //     }
-  //   }
-  //   if (notifyTimer.current) {
-  //     clearTimeout(notifyTimer.current);
-  //     setNotify(null);
-  //   }
-  //   if (buttonName === "CopyLink") {
-  //     navigator.clipboard.writeText(url);
-  //     setNotify("Link copied to clipboard");
-  //     notifyTimer.current = setTimeout(() => setNotify(null), 5000);
-  //   }
-  //   if (buttonName === "Facebook") {
-  //     window.open(`https://www.facebook.com/sharer/sharer.php?text=${encodedURL}`, "_blank");
-  //   }
-  //   if (buttonName === "Twitter") {
-  //     window.open(`https://twitter.com/intent/tweet?url=${encodedURL}`, "_blank");
-  //   }
-  //   if (buttonName === "Whatsapp") {
-  //     window.open(`https://web.whatsapp.com/send?text=${encodedURL}`, "_blank");
-  //   }
-  //   if (buttonName === "Message") {
-  //     navigator.clipboard.writeText(encodedURL);
-  //     setNotify("Link copied to clipboard");
-  //     notifyTimer.current = setTimeout(() => setNotify(null), 5000);
-  //     navigate(`/message`);
-  //   }
-  //   if (buttonName === "Gmail") {
-  //     const subject = encodeURIComponent("Check out this link");
-  //     const body = encodeURIComponent(url);
-  //     const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&tf=1&su=${subject}&body=${body}`;
-  //     window.open(gmailUrl, "_blank");
-  //   }
-  // }
   async function handleShareClick(buttonName, url) {
     setCloseModal(true);
     const encodedURL = encodeURIComponent(url);
 
-    // Update share count only if it's not a game URL
     if (!url.includes("game")) {
       try {
         await axiosInstance.put(`/post/updateShareCount/${shareOptions}`);
-      } catch (error) {
-        // console.error("Error updating share count", error);
-      }
-    }
-
-    // Update UI for shared posts
-    if (page === "Home") {
-      const found = homePagePost.findIndex((e) => e._id === shareOptions);
-      if (found >= 0) {
-        homePagePost[found].sharesCount += 1;
-        setHomePagePost([...homePagePost]);
-      }
-    } else if (page === "Profile") {
-      const found = post.findIndex((e) => e._id === shareOptions);
-      if (found >= 0) {
-        post[found].sharesCount += 1;
-        setNewPost([...post]);
-      }
+      } catch (error) {}
     }
 
     if (notifyTimer.current) {
@@ -126,8 +54,8 @@ const ShareModal = forwardRef(({ page = "Home", URL = "", width }, ref) => {
     }
     if (buttonName === "Message") {
       navigator.clipboard.writeText(url);
-      setNotify("Link copied to clipboard");
-      notifyTimer.current = setTimeout(() => setNotify(null), 5000);
+      // setNotify("Link copied to clipboard");
+      // notifyTimer.current = setTimeout(() => setNotify(null), 5000);
       navigate(`/message`);
     }
     if (buttonName === "Gmail") {
@@ -135,6 +63,20 @@ const ShareModal = forwardRef(({ page = "Home", URL = "", width }, ref) => {
       const body = encodeURIComponent(`I found something interesting: ${url}`);
       const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&tf=1&su=${subject}&body=${body}`;
       window.open(gmailUrl, "_blank");
+    }
+
+    if (page === "Home") {
+      const found = homePagePost.findIndex((e) => e._id === shareOptions);
+      if (found >= 0) {
+        homePagePost[found].sharesCount += 1;
+        setHomePagePost([...homePagePost]);
+      }
+    } else if (page === "Profile") {
+      const found = post.findIndex((e) => e._id === shareOptions);
+      if (found >= 0) {
+        post[found].sharesCount += 1;
+        setNewPost([...post]);
+      }
     }
   }
 
