@@ -1,7 +1,8 @@
 import axios from "axios";
+const EnviroMent = import.meta.env.VITE_ENVIRONMENT;
 
 export const axiosInstance = axios.create({
-  baseURL: "https://renokon-backend.onrender.com/api/v1",
+  baseURL: EnviroMent === "development" ? "http://localhost:5000/api/v1" : "https://renokon-backend.onrender.com/api/v1",
   headers: { "Content-Type": "application/json" },
   withCredentials: true,
 });
