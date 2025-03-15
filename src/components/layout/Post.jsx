@@ -166,7 +166,10 @@ export default function Post({
     }
   }, [voters]);
   async function updateLikes() {
-    if (soundRef.current) soundRef.current.play();
+    if (soundRef.current) {
+      soundRef.current.currentTime = 0;
+      soundRef.current.play();
+    }
     const found = likedData.findIndex((e) => e.postId === id);
     if (found >= 0) {
       likedData[found].userLiked = likeStatus ? false : true;
@@ -266,13 +269,13 @@ export default function Post({
   }
 
   async function saveThisPost(id) {
+    setOpenEditor(null);
     if (notifyTimer.current) {
       clearTimeout(notifyTimer.current);
       setNotify(null);
     }
     try {
       const response = await axiosInstance.post(`/post/${id}/savePost`);
-      setOpenEditor(null);
       if (response.data.message) {
         setNotify(response.data.message);
         notifyTimer.current = setTimeout(() => {
@@ -280,7 +283,7 @@ export default function Post({
         }, 3 * 1000);
       }
     } catch (error) {
-      setOpenEditor(null);
+      // setOpenEditor(null);
       setNotify("Failed to save post, Please try again later");
       notifyTimer.current = setTimeout(() => {
         setNotify(null);
@@ -402,6 +405,10 @@ export default function Post({
   }
 
   async function handleOptionSelect(option) {
+    if (soundRef.current) {
+      soundRef.current.currentTime = 0;
+      soundRef.current.play();
+    }
     setSelectedOption((prev) => {
       if (prev === option) {
         return null;
@@ -421,10 +428,10 @@ export default function Post({
 
   const editor = (
     <motion.div
-      initial={{ opacity: 0, scale: 0.8, height: 0 }}
-      animate={{ opacity: 1, scale: 1, height: "auto" }}
-      exit={{ opacity: 0, scale: 0.8, height: 0 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
+      initial={width > 425 ? { opacity: 0, scale: 0.8, height: 0 } : {}}
+      animate={width > 425 ? { opacity: 1, scale: 1, height: "auto" } : {}}
+      exit={width > 425 ? { opacity: 0, scale: 0.8, height: 0 } : {}}
+      transition={width > 425 ? { duration: 0.3, ease: "easeInOut" } : {}}
       style={{ overflow: "hidden" }}
       ref={postEditRef}
       className={`${

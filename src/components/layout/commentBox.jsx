@@ -8,6 +8,7 @@ import postTimeLogic from "../../lib/Post_Time_Logic.js";
 import PostComment from "./PostComment.jsx";
 import Confirmation from "./Confirmation.jsx";
 import CommentSkeleton from "./PostCommentSkeleton.jsx";
+import sound from "../../assets/notification_sound/interface-button-154180.mp3";
 
 const CommentBox = ({ loggedInUserName, loggedInUserProfilePic, postCreatorName, postId, loggedInUserId, postCreatorId, page = "Home", width }) => {
   const setCommentDetails = globalState((state) => state.setCommentDetails);
@@ -31,11 +32,17 @@ const CommentBox = ({ loggedInUserName, loggedInUserProfilePic, postCreatorName,
   const [commentCounts, setCommentCounts] = useState("");
   const commentInput = useRef();
   const commentRef = useRef();
+  const soundRef = useRef();
 
   async function createComment() {
     if (notifyTimer.current) {
       clearTimeout(notifyTimer.current);
       setNotify(null);
+    }
+    if (soundRef.current) {
+      soundRef.current.currentTime = 0;
+      soundRef.current.volume = 0.2;
+      soundRef.current.play();
     }
     if (commentInput.current.value.trim() === "") {
       commentInput.current.focus();
@@ -176,6 +183,7 @@ const CommentBox = ({ loggedInUserName, loggedInUserProfilePic, postCreatorName,
 
   return (
     <dialog className="commentBoxMain inter fixed inset-0 z-50 flex justify-center w-[100%] h-[100%] items-center bg-black bg-opacity-70">
+      <audio src={sound} preload="auto" ref={soundRef} className="hidden" />
       <div ref={commentRef} className={`innerCommentBox overflow-hidden ${width > 768 ? "h-[88vh]" : "h-[100%]"}  w-[750px] rounded-md pb-2  `}>
         {deletePostComment && <Confirmation cancel={setDeletePostComment} proceed={deleteComment} ConfirmText="Are you sure you want to delete this comment?" width={width} />}
         <div className="relative  h-[100%]">
