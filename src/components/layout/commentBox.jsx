@@ -70,7 +70,7 @@ const CommentBox = ({ loggedInUserName, loggedInUserProfilePic, postCreatorName,
           })
         );
       }
-      setCommentCounts(response.data.allComments.length);
+      // setCommentCounts(response.data.allComments.length);
       if (page === "Home") {
         const found = homePagePost.findIndex((e) => e._id === postId);
         if (found >= 0) {
@@ -97,10 +97,12 @@ const CommentBox = ({ loggedInUserName, loggedInUserProfilePic, postCreatorName,
       clearTimeout(notifyTimer.current);
       setNotify(null);
     }
+    const updated = comment.filter((e) => e._id !== deletePostComment);
+    setComment(updated);
     try {
       const response = await axiosInstance.delete(`/post/${deletePostComment}/${postId}/deleteComment`);
-      setComment(response.data.allComments);
-      setCommentCounts(response.data.allComments.length);
+      // setComment(response.data.allComments);
+      // setCommentCounts(response.data.allComments.length);
       if (width > 768) {
         setNotify("Comment deleted");
         notifyTimer.current = setTimeout(() => {
@@ -135,7 +137,7 @@ const CommentBox = ({ loggedInUserName, loggedInUserProfilePic, postCreatorName,
       try {
         const response = await axiosInstance.get(`/post/${postId}/getComment`);
         if (response) {
-          setCommentCounts(response.data.comments.length);
+          // setCommentCounts(response.data.comments.length);
           setComment(response.data.comments);
           setLoading(false);
         }
