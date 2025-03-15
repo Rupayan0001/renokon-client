@@ -88,7 +88,9 @@ const GamePoolsPage = () => {
       setUser(result.data.user);
       setLoading(false);
     } catch (err) {
-      // navigate("/login");
+      if (err.response?.status === 401) {
+        navigate("/login", { replace: true });
+      }
     }
   };
 
@@ -230,6 +232,27 @@ const GamePoolsPage = () => {
       setSelectedPoolType(null);
     };
   }, [selectedPoolType]);
+  async function logout() {
+    if (notifyTimer.current) {
+      clearTimeout(notifyTimer.current);
+      setNotify(null);
+    }
+    setClickedLogOut(null);
+    setLogOut(true);
+    try {
+      const response = await axiosInstance.post("/auth/logout");
+      if (response.data.message === "Logged out successfully") {
+        setLogOut(null);
+        navigate("/login", { replace: true });
+      }
+    } catch (error) {
+      setLogOut(null);
+      setNotify("Error occured, please try again");
+      notifyTimer.current = setTimeout(() => {
+        setNotify(null);
+      }, 5 * 1000);
+    }
+  }
 
   if (loading || !loggedInUser) {
     return (

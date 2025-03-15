@@ -100,7 +100,9 @@ const PoolPage = () => {
       setUser(result.data.user);
       setLoading(false);
     } catch (err) {
-      // navigate("/login");
+      if (err.response?.status === 401) {
+        navigate("/login", { replace: true });
+      }
     }
   };
 
@@ -267,6 +269,28 @@ const PoolPage = () => {
     }
   }, [joinedPools, playerCountIncreased]);
 
+  async function logout() {
+    if (notifyTimer.current) {
+      clearTimeout(notifyTimer.current);
+      setNotify(null);
+    }
+    setClickedLogOut(null);
+    setLogOut(true);
+    try {
+      const response = await axiosInstance.post("/auth/logout");
+      if (response.data.message === "Logged out successfully") {
+        setLogOut(null);
+        navigate("/login", { replace: true });
+      }
+    } catch (error) {
+      setLogOut(null);
+      setNotify("Error occured, please try again");
+      notifyTimer.current = setTimeout(() => {
+        setNotify(null);
+      }, 5 * 1000);
+    }
+  }
+
   if (loading || (!loggedInUser && !poolDetails)) {
     return (
       <div className="h-screen flex justify-center items-center bg-gradient-to-r from-slate-900 to-black">
@@ -281,7 +305,7 @@ const PoolPage = () => {
         <Confirmation width={windowWidth} cancel={setClickedLogOut} proceed={logout} ConfirmText={`${loggedInUser.name.split(" ")[0]}, are you sure you want to log out?`} />
       )}
       {logOut && (
-        <div className="flex justify-center items-center bg-black bg-opacity-30 ">
+        <div className="">
           <Logout width={windowWidth} />
         </div>
       )}

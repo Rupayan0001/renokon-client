@@ -239,10 +239,16 @@ const MessagePage = () => {
       if (pageLoading.current) {
         clearTimeout(pageLoading.current);
       }
-      setLoading(true);
-      const response = await axiosInstance.get(`/user/getLoggedInuser`);
-      setLoggedInUser(response.data.user);
-      setLoading(false);
+      try {
+        setLoading(true);
+        const response = await axiosInstance.get(`/user/getLoggedInuser`);
+        setLoggedInUser(response.data.user);
+        setLoading(false);
+      } catch (error) {
+        if (err.response?.status === 401) {
+          navigate("/login", { replace: true });
+        }
+      }
     }
     return () => {
       setMessages([]);
@@ -1400,8 +1406,8 @@ const MessagePage = () => {
     try {
       const response = await axiosInstance.post("/auth/logout");
       if (response.data.message === "Logged out successfully") {
-         setLogOut(null);
-           navigate("/login", { replace: true })
+        setLogOut(null);
+        navigate("/login", { replace: true });
         setLastMessage([]);
         setFriendsList([]);
         setActiveGroup(null);
@@ -1409,7 +1415,7 @@ const MessagePage = () => {
         setMessages([]);
         setOnlineUsers([]);
         setIsLoggedOut(true);
-      } 
+      }
     } catch (error) {
       setLogOut(null);
       setNotify("Error occured, please try again");

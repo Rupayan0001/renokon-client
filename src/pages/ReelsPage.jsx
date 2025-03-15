@@ -99,7 +99,11 @@ const ReelsPage = forwardRef(() => {
         const response = await axiosInstance("/reel/getReels");
         setReelsList(response.data.reels);
         setLoadingReels(false);
-      } catch (error) {}
+      } catch (error) {
+        if (err.response?.status === 401) {
+          navigate("/login", { replace: true });
+        }
+      }
     }
     getReel();
   }, []);

@@ -97,7 +97,9 @@ const Wallet = () => {
       setUser(result.data.user);
       setLoading(false);
     } catch (err) {
-      // navigate("/login");
+      if (err.response?.status === 401) {
+        navigate("/login", { replace: true });
+      }
     }
   };
   // const orderId = uuidv4();
@@ -223,7 +225,7 @@ const Wallet = () => {
       const id = uuidv4();
       setOrderId(id);
       const response = await axiosInstance.post("/payment/createOrder", { orderId: id, customerName: loggedInUser.name, customerEmail: loggedInUser.email, amount: amount });
-      
+
       if (response.data.success) {
         setSessionId(response.data.paymentSessionId);
         return response.data.paymentSessionId;

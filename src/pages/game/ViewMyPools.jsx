@@ -90,7 +90,9 @@ const ViewMyPools = () => {
       setUser(result.data.user);
       setLoading(false);
     } catch (err) {
-      // navigate("/login");
+      if (err.response?.status === 401) {
+        navigate("/login", { replace: true });
+      }
     }
   };
 
@@ -209,6 +211,27 @@ const ViewMyPools = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [topBarRightProfilePicRefState]);
+  async function logout() {
+    if (notifyTimer.current) {
+      clearTimeout(notifyTimer.current);
+      setNotify(null);
+    }
+    setClickedLogOut(null);
+    setLogOut(true);
+    try {
+      const response = await axiosInstance.post("/auth/logout");
+      if (response.data.message === "Logged out successfully") {
+        setLogOut(null);
+        navigate("/login", { replace: true });
+      }
+    } catch (error) {
+      setLogOut(null);
+      setNotify("Error occured, please try again");
+      notifyTimer.current = setTimeout(() => {
+        setNotify(null);
+      }, 5 * 1000);
+    }
+  }
 
   if (loading || !loggedInUser) {
     return (
@@ -221,6 +244,9 @@ const ViewMyPools = () => {
     <>
       {confirmDelete && <Confirmation width={windowWidth} cancel={setConfirmDelete} proceed={handleDeletePost} ConfirmText={"Are you sure you want to delete this post?"} />}
       {logOut && <Logout width={windowWidth} />}
+      {clickedLogOut && (
+        <Confirmation width={windowWidth} cancel={setClickedLogOut} proceed={logout} ConfirmText={`${loggedInUser.name.split(" ")[0]}, are you sure you want to log out?`} />
+      )}
       {showLoader && <Loader width={windowWidth} />}
       <audio ref={postUploadedSoundRef} preload="auto" className="hidden" src={post_uploaded} />
       <audio src={delete_notification} preload="auto" ref={deleteSoundRef} className="hidden" />

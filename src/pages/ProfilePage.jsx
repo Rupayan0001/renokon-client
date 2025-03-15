@@ -190,11 +190,8 @@ const ProfilePage = () => {
       setLoading(false);
       setBlock(response.data.isBlocked);
     } catch (error) {
-      if (!loggedInUser) {
-        navigate("/home");
-      }
-      if (!response.data.user) {
-        navigate("/login");
+      if (err.response?.status === 401) {
+        navigate("/login", { replace: true });
       }
     }
   };

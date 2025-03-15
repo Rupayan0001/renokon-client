@@ -18,7 +18,9 @@ const ProtectedRoute = ({ children }) => {
           throw Error;
         }
       } catch (error) {
-        navigate("/login", { replace: true });
+        if (error.response?.status === 401) {
+          navigate("/login", { replace: true });
+        }
       }
     }
     if (!loggedInUser) {

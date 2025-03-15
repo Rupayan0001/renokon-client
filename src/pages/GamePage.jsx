@@ -93,22 +93,12 @@ const GamePage = () => {
       setUser(result.data.user);
       setLoading(false);
     } catch (err) {
-      // navigate("/login");
+      if (err.response?.status === 401) {
+        navigate("/login", { replace: true });
+      }
     }
   };
-  // async function fetchPoolsData() {
-  //   try {
-  //     const response = await axiosInstance.get(`/game/megaPoolsData`);
-  //     if (response.data.success) {
-  //       setPoolsDataList(response.data.pools);
-  //     }
-  //   } catch (error) {
-  //     setNotify("Failed to fetch pools, please try again");
-  //     notifyTimer.current = setTimeout(() => {
-  //       setNotify(null);
-  //     }, 5 * 1000);
-  //   }
-  // }
+
   // async function getQuickPlayPool() {
   //   try {
   //     setLoadingPools(true);
@@ -121,22 +111,6 @@ const GamePage = () => {
   //     setLoadingPools(false);
   //   }
   // }
-  // useEffect(() => {
-  //   setSelected("Game");
-  //   if (!loggedInUser) {
-  //     response();
-  //   } else if (loggedInUser && !poolsDataList.length) {
-  //     setUser(loggedInUser);
-  //     getQuickPlayPool();
-  //   } else if (loggedInUser && poolsDataList.length) {
-  //     setUser(loggedInUser);
-  //     getQuickPlayPool();
-  //     setLoading(false);
-  //   }
-  //   return () => {
-  //     setNotifyClicked(null);
-  //   };
-  // }, [loggedInUser]);
 
   async function fetchPoolsData() {
     if (notifyTimer.current) {

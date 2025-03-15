@@ -132,7 +132,9 @@ const ViewMyPools = () => {
       setUser(response.data.user);
       setLoading(false);
     } catch (err) {
-      // navigate("/login");
+      if (err.response?.status === 401) {
+        navigate("/login", { replace: true });
+      }
     }
   };
   async function fetchPoolsData() {

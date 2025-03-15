@@ -91,7 +91,9 @@ const Deposit = () => {
       setUser(result.data.user);
       setLoading(false);
     } catch (err) {
-      // navigate("/login");
+      if (err.response?.status === 401) {
+        navigate("/login", { replace: true });
+      }
     }
   };
   // const orderId = uuidv4();
@@ -187,7 +189,7 @@ const Deposit = () => {
     try {
       const orderId = uuidv4();
       const response = await axiosInstance.post("/payment/createOrder", { orderId: orderId, customerName: loggedInUser.name, customerEmail: loggedInUser.email, amount: amount });
-      
+
       if (response.data.success) {
         // cashfree.pay();
         const cashfree = new window.Cashfree.PG();

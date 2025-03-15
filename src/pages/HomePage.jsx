@@ -146,7 +146,9 @@ const HomePage = () => {
       setUser(result.data.user);
       setLoading(false);
     } catch (err) {
-      navigate("/login");
+      if (err.response?.status === 401) {
+        navigate("/login", { replace: true });
+      }
     }
   };
   useEffect(() => {
@@ -481,8 +483,8 @@ const HomePage = () => {
       const response = await axiosInstance.post("/auth/logout");
       if (response.data.message === "Logged out successfully") {
         setIsLoggedOut(true);
-          setLogOut(null);
-           navigate("/login", { replace: true })
+        setLogOut(null);
+        navigate("/login", { replace: true });
       }
     } catch (error) {
       setLogOut(null);
